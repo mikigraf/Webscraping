@@ -7,7 +7,6 @@ number = raw_input("PODAJ 6-CIO CYFROWY NUMER PLIKU, OD KTOREGO MA ZACZYNAC SIE 
 interwal = raw_input("CO ILE SEKUND MA BYC SPRAWDZANY KOLEJNY PLIK/LINK? ZALECAM CZAS OKOLO 5-15 SEKUND.: ")
 
 
-
 for number in range(int(number),300000,1):
     time.sleep(int(interwal))
 
@@ -20,6 +19,5 @@ for number in range(int(number),300000,1):
         title1 = str(soup.find_all('title'))
         print(soup.title)
         print(" " + link2)
-        open("SENDFILE MINER",'a').write(soup.title.string.encode("utf-16"))
-        open("SENDFILE MINER",'a').write(" " + link2 + "\n")
+        open("SENDFILEMINER.txt",'a').write(soup.title.string.encode("utf-8") + " " + link2 + "\n")
 

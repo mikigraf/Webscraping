@@ -29,9 +29,6 @@ def checkIfInMensa(food, fromaddr, toaddr, username, passwd):
     server.sendmail(fromaddr, toaddr, msg)
     server.quit()
 
-    else:
-        print(datetime.now().strftime('%H:%M'))
-
 checkIfInMensa(food='Hamburger', fromaddr='pythonmegatron@gmail.com', toaddr='imspacedreamer@gmail.com',
                email='imspacedreamer@gmail.com', username='pythonmegatron@gmail.com', passwd='sadasd ')
 

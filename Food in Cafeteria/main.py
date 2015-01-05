@@ -2,6 +2,10 @@ __author__ = 'spejs'
 import smtplib
 from datetime import datetime
 import urllib2
+import ninja
+
+
+
 
 from bs4 import BeautifulSoup
 

@@ -6,7 +6,7 @@ import time
 
 news = urllib2.urlopen('http://www.fh-dortmund.de/de/fb/4/isc/aktuelles/index.php?archive=1').read()
 soup = BeautifulSoup(news)
-psw = 
+psw =
 
 def fetchOldNews():
     soup2 = soup.body.get_text();

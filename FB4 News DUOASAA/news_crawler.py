@@ -1,27 +1,50 @@
 import smtplib
 import urllib2
 from bs4 import BeautifulSoup
+import time
 
 
+news = urllib2.urlopen('http://www.fh-dortmund.de/de/fb/4/isc/aktuelles/index.php?archive=1').read()
+soup = BeautifulSoup(news)
+psw = 
 
-def fetchNews():
-    news = urllib2.urlopen('http://www.fh-dortmund.de/de/fb/4/isc/aktuelles/index.php?archive=1').read()
-    soup = BeautifulSoup(news)
-    file = open('LOG.txt','w')
-    file.write(soup)
+def fetchOldNews():
+    soup2 = soup.body.get_text();
+    print(soup2)
+    soup2Encoded = soup2.encode('utf-8')
+    file = open('LOG.txt','a')
+    file.write(soup2Encoded)
     file.close()
-    print('fetched')
+
 
 
 def compare():
     file = open('LOG.txt', 'r')
-    oldNews = file.get_text();
-    newNews = urllib2.urlopen('http://www.fh-dortmund.de/de/fb/4/isc/aktuelles/index.php?archive=1').read()
-    soup = BeautifulSoup(newNews)
-    if(oldNews == newNews ):
-        fetchNews()
+    oldNews = file.read();
+    soup2 = soup.body.get_text()
+    newNews = soup2.encode('utf-8')
+    print(newNews)
+    if(oldNews == newNews):
+        time.sleep(3600)
+        compare()
     else:
-        return
+        msg = "\r\n".join([
+        "From: pythonmegatron@gmail.com",
+        "To: imspacedreamer@gmail.com",
+        "Subject: " + newNews[:15] + " ",
+        newNews,
+        ""
+        ])
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.ehlo()
+        server.starttls()
+        server.login('pythonmegatron@gmail.com', psw)
+        server.sendmail('pythonmegatron@gmail.com', 'imspacedreamer@gmail.com', msg)
+        server.quit()
+        time.sleep(3600)
+        compare()
 
-fetchNews()
+
+
+fetchOldNews()
 compare()

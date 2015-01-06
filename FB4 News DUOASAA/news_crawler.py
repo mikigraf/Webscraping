@@ -44,6 +44,11 @@ def compare():
         time.sleep(3600)
         compare()
 
+def saveAllNews():
+    running = True
+    while(running == True):
+        fetchOldNews()
+
 
 
 fetchOldNews()

@@ -2,11 +2,11 @@ import smtplib
 import urllib2
 from bs4 import BeautifulSoup
 import time
-
+import os
 
 news = urllib2.urlopen('http://www.fh-dortmund.de/de/fb/4/isc/aktuelles/index.php?archive=1').read()
 soup = BeautifulSoup(news)
-psw =
+
 
 def fetchOldNews():
     soup2 = soup.body.get_text();
@@ -49,7 +49,6 @@ def saveAllNews():
     while(running == True):
         fetchOldNews()
 
+def deleteLogFile():
+    os.remove('LOG.txt')
 
-
-fetchOldNews()
-compare()

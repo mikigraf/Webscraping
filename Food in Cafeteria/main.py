@@ -3,6 +3,7 @@ import smtplib
 from datetime import datetime
 import urllib2
 import ninja
+import getpass
 
 
 
@@ -12,13 +13,17 @@ from bs4 import BeautifulSoup
 
 mensa = urllib2.urlopen('http://www.stwdo.de/gastronomie/speiseplaene/hauptmensa/').read()
 soup = BeautifulSoup(mensa)
-
+food = raw_input("Notify me when available: ")
+fromaddr = raw_input("Send email from: ")
+toaddr = raw_input("Send to: ")
+username = raw_input("Email username: ")
+passwd = getpass.getpass()
 
 def checkIfInMensa(food, fromaddr, toaddr, username, passwd):
     soup2 = soup.body.get_text();
     if (food in soup2):
-        print('HAMBURGERS IN MENSA!')
-        print('Email was sent to imspacedreamer@gmail.com')
+        print(food + ' IN MENSA')
+        print('Email was sent to: ' + toaddr)
     msg = "\r\n".join([
         "From: " + fromaddr,
         "To: " + toaddr,
@@ -33,5 +38,6 @@ def checkIfInMensa(food, fromaddr, toaddr, username, passwd):
     server.sendmail(fromaddr, toaddr, msg)
     server.quit()
 
-checkIfInMensa(food='Hamburger', fromaddr='pythonmegatron@gmail.com', toaddr='imspacedreamer@gmail.com',username='pythonmegatron@gmail.com', passwd='')
+
+checkIfInMensa(food, fromaddr, toaddr, username, passwd)
 

@@ -7,7 +7,7 @@ import os
 news = urllib2.urlopen('http://www.fh-dortmund.de/de/fb/4/isc/aktuelles/index.php?archive=1').read()
 soup = BeautifulSoup(news)
 
-
+# get news and save them into log file
 def fetchOldNews():
     soup2 = soup.body.get_text();
     print(soup2)
@@ -17,7 +17,7 @@ def fetchOldNews():
     file.close()
 
 
-
+# compare news, that are already in the log file with newly fetched news
 def compare():
     file = open('LOG.txt', 'r')
     oldNews = file.read();

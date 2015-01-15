@@ -1,15 +1,5 @@
 package main;
 
-/**
- * Naming conventions: prefixes to the names of objects:
- * JLabel = LBL
- * JTextField = TF
- * 
- * after that continue with naming as usual, starting with small case letters, for example:
- * LBLlinkL
- * 
- */
-
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

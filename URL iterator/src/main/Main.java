@@ -4,10 +4,10 @@ package main;
  * Naming conventions: prefixes to the names of objects:
  * JLabel = LBL
  * JTextField = TF
- * 
+ *
  * after that continue with naming as usual, starting with small case letters, for example:
  * LBLlinkL
- * 
+ *
  */
 
 import gui.GUI;
@@ -40,10 +40,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 public class Main {
-
-	// test path on osx = /Users/spejs/Desktop/test.html
-	// test path on windows = D:\\test.html
-
 	public static void main(String[] args) {
 		new GUI();
 
